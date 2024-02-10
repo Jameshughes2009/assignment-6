@@ -11,6 +11,8 @@ var getCityInfo =() => {
 
     GEOCODING_API_URL = "https://api.openweathermap.org/data/2.5/weather?q=sunderland,uk&APPID=2511bbd53378a380481fc0227749b46b"
 
+    // we can add other Key we have to get th same functionaility
+
     console.log(cityName)
 
     fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
