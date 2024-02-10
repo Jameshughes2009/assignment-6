@@ -91,19 +91,21 @@ h1 {
 
 .weather-cards {
     display: flex;
-    Gap: 20px;
+    gap: 20px
 
 }
 .weather-cards .card {
     background: red;
     color: white;
-    padding: 18px;
-    width: calc(100%/3);
+    list-style: none;
+    padding: 18px 16px;
+    border-radius: 5px;
+    width: calc(100%/5);
 }
 
 .weather-cards .card img {
     max-width: 70px;
-    margin: 5px;
+    margin: 5px 0 -12px 0;
 }
 @media (max-width: 1400px) {
     .weather-data .current-weather{
