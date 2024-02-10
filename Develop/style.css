@@ -40,3 +40,19 @@ h1 {
 .weather-data {
     width: 100%;
 }
+.weather-input button{
+    width: 100%;
+    color: aqua;
+    background-color: blueviolet;
+    padding: 13px;
+}
+
+.weather-input .location-btn{
+    background-color: brown;
+}
+.weather-input .separator{
+    height: 1px;
+    width: 100%;
+    margin: 15px;
+    background-color: aquamarine;
+}
