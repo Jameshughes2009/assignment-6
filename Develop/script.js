@@ -7,7 +7,7 @@ var API_KEY = "2511bbd53378a380481fc0227749b46b" //My API key
 var getCityInfo =() => {
     var cityName = cityInput.value.trim(); // Get User to enter city name
     if(!cityName) return; // return if city name empty
-    var GEOCODING_API_URL = 'http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}'
+    var GEOCODING_API_URL = "https://api.openweathermap.org/data/2.5/weather?q=manchester,uk&APPID=2511bbd53378a380481fc0227749b46b"
     // console.log(cityName)
 
     fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
