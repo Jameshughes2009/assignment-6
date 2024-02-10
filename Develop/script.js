@@ -1,7 +1,7 @@
 var cityInput = document.querySelector(".city-input")
 var searchButton = document.querySelector(".search-btn")
 
-var API_KEY = "608bd88476d2913911a7aa1be9fe2978" //My API key
+var API_KEY = "2511bbd53378a380481fc0227749b46b" //My API key
 
 
 var getCityInfo =() => {
@@ -18,3 +18,13 @@ var getCityInfo =() => {
 }
 
 searchButton.addEventListener("click", getCityInfo)
+
+// function getWeather() {
+//     const apiKey = "2511bbd53378a380481fc0227749b46b"
+//     const city = document.getElementById('city').value;
+
+//     if(!city) {
+//         alert ("Please Make a selection");
+//         return;
+//     }
+// } other tesing 
