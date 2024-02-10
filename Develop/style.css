@@ -100,7 +100,7 @@ h1 {
     list-style: none;
     padding: 18px 16px;
     border-radius: 5px;
-    width: calc(100%/5);
+    width: calc(100% / 5);
 }
 
 .weather-cards .card img {
@@ -112,7 +112,7 @@ h1 {
         padding: 20px;
     }
     .weather-cards {
-        flex-wrap: wrap;
+        flex-wrap: flex;
     }
     .weather-cards .card {
         width: calc(100% / 4 - 15px)
