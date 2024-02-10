@@ -116,4 +116,9 @@ h1 {
         width: calc(100% / 4 - 15px)
     }
 }
+@media (max-width: 1200px) {
+    .weather-input{
+        width: 450px;
+    }
+}
 /* Test */
