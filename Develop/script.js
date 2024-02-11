@@ -2,9 +2,27 @@ var cityInput = document.querySelector(".city-input")
 var searchButton = document.querySelector(".search-btn")
 var locationButton = document.querySelector(".location-btn")
 var currentWeatherDiv = document.querySelector(".current-weather")
-var weatherCardsDiv = document.querySelector("weather-cards")
+var weatherCardsDiv = document.querySelector(".weather-cards")
 
 var API_KEY = "2511bbd53378a380481fc0227749b46b" //My API key
+
+// const getWeatherDetails = (cityName, lat, lon) => {
+//     const WEATHER_API = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+//     console.log(data)
+
+//     fetch(WEATHER_API).then(res => res.json()).then(date => {
+//         const uniqueForecastDays = []
+//         const fiveDaysForecaset = data.list.filter(forecast = >{
+//             const forecastDate = new Date(forecast.dt_txt).getDate();
+            
+//             if(!uniqueForecastDaysincludes(forecastDate)){
+//                 return uniqueForecastDays.push(forecastDate)
+//             }
+//         })
+//     }).catch(()=>{
+        
+//     })
+// }
 
 
 var getCityInfo =() => {
@@ -24,11 +42,11 @@ var getCityInfo =() => {
         getWeatherDetails(name, lat, lon);
 
     }).catch(() => {
-        alert("Testing")
+        // alert("Testing")
     })
 }
-console.log(data)
-console.log(lat)
+// console.log(data)
+// console.log(lat)
 searchButton.addEventListener("click", getCityInfo)
 
 // function getWeather() {
