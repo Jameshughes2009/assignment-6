@@ -34,33 +34,108 @@ var createWeatherCard = (cityName, weatherItem, index) =>{
     }
 }
 
-var getWeatherDetails = (cityName, latitude, logitude) => {
-    var WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+// var getWeatherDetails = (cityName, latitude, logitude) => {
+//     var WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
 
-    fetch (WEATHER_API_URL).then(response => response.json()).then(data => {
+//     fetch (WEATHER_API_URL).then(response => response.json()).then(data => {
+//         var uniqueForecastDays = [];
+//         var fiveDaysForecast = data.list.filter(forecast => {
+//             var forecastDate = new Date(forecast.dt_txt).getDate();
+//             if (!uniqueForecastDays.includes(forecastDate)) {
+//                 return uniqueForecastDays.push(forecastDate)
+//             }
+//         });
+
+//         cityInput.value = "";
+//         currentWeatherDiv.innerHTML = ""
+//         weatherCardsDiv.innerHTML = "";
+
+//         fiveDaysForecast.forEach((weatherItem, index) =>{
+//             var html = createWeatherCard(cityName, weatherItem, index);
+//             if (index === 0) {
+//                 currentWeatherDiv.insertAdjacentHTML("beforeend", html);
+//             }else{
+//                 weatherCardsDiv.insertAdjacentHTML("beforeend", html)
+//             }
+//         });
+//     }).catch(() =>{
+//         alert("There has been a problem with fetching the weather forecast")
+//     });
+// }
+var getWeatherDetails = (cityName, latitude, longitude) => {
+    var WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`;
+
+    fetch(WEATHER_API_URL).then(response => response.json()).then(data => {
+        // Filter the forecasts to get only one forecast per day
         var uniqueForecastDays = [];
         var fiveDaysForecast = data.list.filter(forecast => {
             var forecastDate = new Date(forecast.dt_txt).getDate();
             if (!uniqueForecastDays.includes(forecastDate)) {
-                return uniqueForecastDays.push(forecastDate)
+                return uniqueForecastDays.push(forecastDate);
             }
         });
 
+        // Clearing previous weather data
         cityInput.value = "";
-        currentWeatherDiv.innerHTML = ""
+        currentWeatherDiv.innerHTML = "";
         weatherCardsDiv.innerHTML = "";
 
-        fiveDaysForecast.forEach((weatherItem, index) =>{
+        // Creating weather cards and adding them to the DOM
+        fiveDaysForecast.forEach((weatherItem, index) => {
             var html = createWeatherCard(cityName, weatherItem, index);
             if (index === 0) {
                 currentWeatherDiv.insertAdjacentHTML("beforeend", html);
-            }else{
-                weatherCardsDiv.insertAdjacentHTML("beforeend", html)
+            } else {
+                weatherCardsDiv.insertAdjacentHTML("beforeend", html);
             }
-        });
-    }).catch(() =>{
-        alert("There has been a problem with fetching the weather forecast")
+        });        
+    }).catch(() => {
+        alert("An error occurred while fetching the weather forecast!");
     });
 }
 
+var getCityCoordinates = () => {
+    var cityName = cityInput.value.trim();
+    if (cityName === "") return;
+    var API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`;
+    
+    // Get entered city coordinates (latitude, longitude, and name) from the API response
+    fetch(API_URL).then(response => response.json()).then(data => {
+        if (!data.length) return alert(`No coordinates found for ${cityName}`);
+        var { lat, lon, name } = data[0];
+        getWeatherDetails(name, lat, lon);
+        console.log(data)// how to add console logs 
+    }).catch(() => {
+        alert("An error occurred while fetching the coordinates!");
+    });
+}
+
+var getDeezCoordinates = () => {
+    navigator.geolocation.getCurrentPosition(
+        position => {
+            var { latitude, longitude } = position.coords; // Get coordinates of user location
+            // Get city name from coordinates using reverse geocoding API
+            console.log(position)
+            const API_URL = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${API_KEY}`;
+            fetch(API_URL).then(response => response.json()).then(data => {
+                const { name } = data[0];
+                getWeatherDetails(name, latitude, longitude);
+            }).catch(() => {
+                alert("An error occurred while fetching the city name!");
+            });
+        },
+        error => { // Show alert if user denied the location permission
+            if (error.code === error.PERMISSION_DENIED) {
+                alert("Geolocation request denied. Please reset location permission to grant access again.");
+            } else {
+                alert("Geolocation request error. Please reset location permission.");
+            }
+        });console.log(getDeezCoordinates)
+}
+
+
+locationButton.addEventListener("click", getDeezCoordinates);// remeber you can edit the yellow text
+searchButton.addEventListener("click", getCityCoordinates);
+cityInput.addEventListener("keyup", e => e.key === "Enter" && getCityCoordinates());
+searchButton.addEventListener("click", getCityInfo)
 
