@@ -10,7 +10,7 @@ var API_KEY = "2511bbd53378a380481fc0227749b46b" //My API key
 var getCityInfo =() => {
     var cityName = cityInput.value.trim(); // Get User to enter city name
     if(!cityName) return; // return if city name empty
-    var GEOCODING_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=2511bbd53378a380481fc0227749b46b`
+    var GEOCODING_API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=${API_KEY}`
 
     // GEOCODING_API_URL = "https://api.openweathermap.org/data/2.5/weather?q=sunderland,uk&APPID=2511bbd53378a380481fc0227749b46b"
 
