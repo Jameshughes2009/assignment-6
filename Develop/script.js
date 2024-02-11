@@ -16,15 +16,19 @@ var getCityInfo =() => {
 
     // we can add other Key we have to get th same functionaility
 
-    console.log(cityName)
+    // console.log(cityName)
 
     fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
         console.log(data)
+        const {name, lat, lon} = data[0]
+        getWeatherDetails(name, lat, lon);
+
     }).catch(() => {
         alert("Testing")
     })
 }
-
+console.log(data)
+console.log(lat)
 searchButton.addEventListener("click", getCityInfo)
 
 // function getWeather() {
