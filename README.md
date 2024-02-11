@@ -11,7 +11,7 @@
 * [Link to Live Page](https://jameshughes2009.github.io/assignment-6/v2/)
 
 * [Link to Youtube Video](https://www.youtube.com/watch?v=74IOjtVvExY&t=830s)
-    * Used this a reference material when creating mine
+    * Used this as reference material when creating my app. It is much better than anything in course content
 
 * Live Page Screenshot
 
