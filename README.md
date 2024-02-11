@@ -1,6 +1,6 @@
 # Assignment 6 Weather App
 ## By James Hughes
-### Use the 5 Day Weather ForecastLinks to an external site. to retrieve weather data for cities. The base URL should look like the following: https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}. After registering for a new API key, you may need to wait up to 2 hours for that API key to activate..
+### This week we are using the 5 Day Weather ForecastLinks to an external site. to retrieve weather data for cities. The base URL should look like the following: https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}. After registering for a new API key, you may need to wait up to 2 hours for that API key to activate..
 * [Link to Repository](https://github.com/Jameshughes2009/assignment-6)
 
 * [Link to Live README File](https://jameshughes2009.github.io/assignment-6/)
